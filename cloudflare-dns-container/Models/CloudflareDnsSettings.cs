@@ -9,21 +9,21 @@ namespace cloudflare_dns_container.Models
         public string ApiToken { get; set; }
         public int UpdateInterval { get; set; }
         public string DnsZone { get; set; }
-        public List<string> Records { get; set; }
+        public string[] Records { get; set; }
 
         public CloudflareDnsSettings()
         {
             ApiToken = string.Empty;
             UpdateInterval = 120;
             DnsZone = string.Empty;
-            Records = [];
+            Records = Array.Empty<string>();
         }
 
         public bool IsValid()
         {
             if (string.IsNullOrWhiteSpace(ApiToken)) return false;
             if (string.IsNullOrWhiteSpace(DnsZone)) return false;
-            if (Records.Count == 0) return false;
+            if (Records.Length == 0) return false;
             return true;
         }
     }
